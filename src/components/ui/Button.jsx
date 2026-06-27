@@ -1,0 +1,34 @@
+const variants = {
+  primary:
+    "bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg shadow-indigo-600/30",
+
+  secondary:
+    "border border-slate-700 bg-slate-900 text-white hover:border-indigo-500 hover:bg-slate-800",
+};
+
+const Button = ({
+  children,
+  variant = "primary",
+  className = "",
+  ...props
+}) => {
+  return (
+    <button
+      className={`
+        px-6 py-3
+        rounded-xl
+        font-semibold
+        transition-all
+        duration-300
+        hover:-translate-y-1
+        ${variants[variant]}
+        ${className}
+      `}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
+
+export default Button;
