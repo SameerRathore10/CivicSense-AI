@@ -1,16 +1,62 @@
-# React + Vite
+# CivicSense AI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An AI-powered civic issue reporting platform that enables citizens to report local problems through image analysis, geolocation, and community-driven resolution tracking.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+https://civic-sense-ai.vercel.app/
 
-## React Compiler
+## GitHub Repository
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+https://github.com/SameerRathore10/CivicSense-AI
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* AI-powered issue detection using Gemini AI
+* Image upload with Cloudinary
+* Firebase Authentication
+* Client and Admin roles
+* Interactive civic issue map
+* Report tracking dashboard
+* My Reports section
+* Admin Dashboard
+* Search reports by reporter, issue type, and department
+* Real-time status updates
+
+## Tech Stack
+
+* React.js
+* Vite
+* Tailwind CSS
+* Firebase Authentication
+* Firestore Database
+* Google Gemini AI
+* Cloudinary
+* React Leaflet
+* Vercel
+
+## Workflow
+
+1. User registers and logs in.
+2. User uploads an image of a civic issue.
+3. Gemini AI analyzes the image and identifies the issue.
+4. User selects the issue location on the map.
+5. Report is stored in Firestore.
+6. Users can track reports in My Reports.
+7. Admins manage, resolve, and search reports.
+
+## Project Screenshots
+
+* Landing Page
+* Login/Register
+* Report Issue
+* AI Analysis
+* My Reports
+* Civic Issues Map
+* Admin Dashboard
+
+## Author
+
+Sameer Rathore
+B.Tech AI & Data Science
+Arya College of Engineering & Information Technology, Jaipur
