@@ -33,12 +33,17 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full bg-slate-950/80 backdrop-blur-md border-b border-slate-800 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-8 py-4">
-        
-        <Link to="/">
-          <h1 className="text-2xl font-bold text-white cursor-pointer">
-            CivicSense <span className="text-indigo-500">AI</span>
-          </h1>
-        </Link>
+        <button
+          onClick={() =>
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            })
+          }
+          className="text-2xl font-bold text-white cursor-pointer"
+        >
+          CivicSense <span className="text-indigo-500">AI</span>
+        </button>
 
         <ul className="hidden md:flex items-center gap-8 text-slate-300">
           <li>
