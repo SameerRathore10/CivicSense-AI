@@ -8,6 +8,7 @@ import Admin from "./pages/Admin/Admin";
 import Register from "./pages/Register/Register";
 import MyReports from "./pages/MyReports/MyReports";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AdminRoute from "./components/AdminRoute";
 import MapPage from "./pages/MapPage/MapPage";
 
 function App() {
@@ -32,9 +33,9 @@ function App() {
         <Route
           path="/admin"
           element={
-            <ProtectedRoute>
+            <AdminRoute>
               <Admin />
-            </ProtectedRoute>
+            </AdminRoute>
           }
         />
 
