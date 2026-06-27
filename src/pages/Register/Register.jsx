@@ -15,7 +15,9 @@ const Register = () => {
     try {
       await registerUser(email, password, role);
 
-      alert("✅ Account created successfully! Please login.");
+      alert(
+        "✅ Account created successfully. Please check your email and verify your account before logging in.",
+      );
 
       navigate("/login");
     } catch (error) {

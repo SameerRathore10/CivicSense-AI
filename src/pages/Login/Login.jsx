@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../services/auth";
 
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../firebase/firebase";
-import { auth } from "../../firebase/firebase";
+import { db, auth } from "../../firebase/firebase";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,6 +18,15 @@ const Login = () => {
       await loginUser(email, password);
 
       const user = auth.currentUser;
+
+      await user.reload();
+
+      if (!user.emailVerified) {
+        alert(
+          "❌ Please verify your email before logging in. Check your inbox.",
+        );
+        return;
+      }
 
       const userDoc = await getDoc(doc(db, "users", user.uid));
 
@@ -44,15 +52,15 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 flex items-center justify-center px-6">
-      {" "}
       <div className="w-full max-w-md bg-slate-900 rounded-2xl border border-slate-800 p-8 shadow-xl">
-        {" "}
         <h1 className="text-3xl font-bold text-white text-center">
-          Welcome Back 👋{" "}
+          Welcome Back 👋
         </h1>
+
         <p className="text-slate-400 text-center mt-2">
           Login to continue using CivicSense AI
         </p>
+
         <form onSubmit={handleLogin} className="mt-8 space-y-5">
           <input
             type="email"
@@ -79,6 +87,7 @@ const Login = () => {
             Login
           </button>
         </form>
+
         <p className="text-center text-slate-400 mt-6">
           Don't have an account?
           <span
