@@ -58,26 +58,57 @@ const ImageUpload = ({ setAnalysis, setImageUrl }) => {
 
   return (
     <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8">
-      {" "}
       <h2 className="text-2xl font-bold text-white mb-6">
-        Upload Issue Image{" "}
+        Upload Issue Image
       </h2>
-      ```
-      <label className="border-2 border-dashed border-slate-700 rounded-2xl p-10 flex flex-col items-center justify-center cursor-pointer hover:border-indigo-500 transition">
-        <FaCloudUploadAlt size={60} className="text-indigo-500 mb-4" />
 
-        <p className="text-slate-300">Click to upload an image</p>
+      <div className="grid md:grid-cols-2 gap-4">
+        {/* Camera Upload */}
+        <label className="border-2 border-dashed border-slate-700 rounded-2xl p-8 flex flex-col items-center justify-center cursor-pointer hover:border-indigo-500 transition">
+          <FaCloudUploadAlt
+            size={50}
+            className="text-indigo-500 mb-4"
+          />
 
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImage}
-          className="hidden"
-        />
-      </label>
+          <p className="text-slate-300 font-medium">
+            📷 Open Camera
+          </p>
+
+          <input
+            type="file"
+            accept="image/*"
+            capture="environment"
+            onChange={handleImage}
+            className="hidden"
+          />
+        </label>
+
+        {/* Gallery Upload */}
+        <label className="border-2 border-dashed border-slate-700 rounded-2xl p-8 flex flex-col items-center justify-center cursor-pointer hover:border-indigo-500 transition">
+          <FaCloudUploadAlt
+            size={50}
+            className="text-indigo-500 mb-4"
+          />
+
+          <p className="text-slate-300 font-medium">
+            🖼️ Upload From Gallery
+          </p>
+
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImage}
+            className="hidden"
+          />
+        </label>
+      </div>
+
       {uploading && (
-        <p className="mt-4 text-indigo-400">Uploading & Analyzing...</p>
+        <p className="mt-4 text-indigo-400">
+          Uploading & Analyzing...
+        </p>
       )}
+
       {preview && (
         <img
           src={preview}
@@ -85,9 +116,12 @@ const ImageUpload = ({ setAnalysis, setImageUrl }) => {
           className="mt-6 rounded-xl w-full max-h-96 object-cover"
         />
       )}
+
       {uploadedImageUrl && (
         <div className="mt-4 p-3 rounded-lg bg-slate-800">
-          <p className="text-green-400 text-sm">✅ Uploaded Successfully</p>
+          <p className="text-green-400 text-sm">
+            ✅ Uploaded Successfully
+          </p>
         </div>
       )}
     </div>
