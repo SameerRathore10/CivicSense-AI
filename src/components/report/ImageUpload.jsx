@@ -26,7 +26,7 @@ const ImageUpload = ({ setAnalysis, setImageUrl }) => {
 
       console.log("Cloudinary URL:", url);
 
-      const result = await analyzeIssue(url);
+      const result = await analyzeIssue(file);
 
       console.log("Gemini Result:", result);
 
