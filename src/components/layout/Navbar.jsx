@@ -40,9 +40,17 @@ const Navbar = () => {
         </h1>
         <ul className="hidden md:flex items-center gap-8 text-slate-300">
           <li>
-            <Link to="/" className="hover:text-indigo-400 transition">
+            <button
+              onClick={() =>
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                })
+              }
+              className="hover:text-indigo-400 transition"
+            >
               Home
-            </Link>
+            </button>
           </li>
 
           <li>
