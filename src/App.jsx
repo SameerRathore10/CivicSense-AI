@@ -10,10 +10,12 @@ import MyReports from "./pages/MyReports/MyReports";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminRoute from "./components/AdminRoute";
 import MapPage from "./pages/MapPage/MapPage";
+import Navbar from "./components/layout/Navbar";
 
 function App() {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />

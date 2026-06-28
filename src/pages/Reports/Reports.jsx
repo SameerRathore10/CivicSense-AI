@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
+import { motion } from "framer-motion";
 import { db } from "../../firebase/firebase";
 
 const Reports = () => {
@@ -25,14 +26,23 @@ const Reports = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-950 p-10">
-      <h1 className="text-5xl font-bold text-white mb-8">Community Reports</h1>
+    <div className="min-h-screen bg-stone-950 pt-28 p-10">
+      <motion.h1 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-5xl font-bold text-stone-100 mb-8"
+      >
+        Community Reports
+      </motion.h1>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {reports.map((report) => (
-          <div
+        {reports.map((report, index) => (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
             key={report.id}
-            className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden"
+            className="bg-stone-900 border border-stone-800 rounded-2xl overflow-hidden hover:border-green-500 hover:shadow-lg transition duration-300"
           >
             <img
               src={report.imageUrl}
@@ -41,7 +51,7 @@ const Reports = () => {
             />
 
             <div className="p-5">
-              <h2 className="text-xl font-bold text-white">
+              <h2 className="text-xl font-bold text-stone-100">
                 {report.issueType}
               </h2>
 
@@ -53,12 +63,12 @@ const Reports = () => {
                 </span>
               </p>
 
-              <p className="text-slate-300 mt-2">{report.department}</p>
-              <p className="text-slate-400 text-sm mt-2">
+              <p className="text-stone-300 mt-2">{report.department}</p>
+              <p className="text-stone-400 text-sm mt-2">
                 Reported by: {report.userEmail}
               </p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 import ImageUpload from "../../components/report/ImageUpload";
 import AIResultCard from "../../components/report/AIResultCard";
@@ -11,13 +12,18 @@ const ReportIssue = () => {
   const [location, setLocation] = useState(null);
 
   return (
-    <div className="min-h-screen bg-slate-950 py-20 px-6">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-5xl font-bold text-white mb-3">
+    <div className="min-h-screen bg-stone-950 pt-28 pb-20 px-6">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ duration: 0.6 }}
+        className="max-w-7xl mx-auto"
+      >
+        <h1 className="text-5xl font-bold text-stone-100 mb-3">
           Report Community Issue
         </h1>
 
-        <p className="text-slate-400 mb-10">
+        <p className="text-stone-400 mb-10">
           Upload an image and let Gemini AI analyze the issue.
         </p>
 
@@ -36,7 +42,7 @@ const ReportIssue = () => {
             />
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

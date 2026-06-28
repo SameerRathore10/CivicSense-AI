@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
+import { motion } from "framer-motion";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useNavigate } from "react-router-dom";
 
@@ -43,57 +44,54 @@ const MapPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-950">
-      {" "}
-      <div className="fixed top-4 right-4 z-[1000]">
-        <button
-          onClick={() => navigate("/")}
-          className="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-xl shadow-lg"
-        >
-          🏠 Home{" "}
-        </button>{" "}
-      </div>
-      <h1 className="text-4xl font-bold text-white text-center py-6">
-        🗺️ Civic Issues Map
-      </h1>
-      <MapContainer
-        center={[26.9124, 75.7873]}
-        zoom={12}
-        style={{ height: "85vh", width: "100%" }}
+    <div className="min-h-screen bg-stone-950 pt-40 px-6">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
       >
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <h1 className="text-4xl font-bold text-stone-100 text-center mb-8 mt-10">
+          🗺️ Civic Issues Map
+        </h1>
+        <MapContainer
+          center={[26.9124, 75.7873]}
+          zoom={12}
+          style={{ height: "85vh", width: "100%" }}
+        >
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
-        {reports.map((report) => (
-          <Marker
-            key={report.id}
-            position={[report.latitude, report.longitude]}
-          >
-            <Popup>
-              <div>
-                <h3>
-                  <b>{report.issueType}</b>
-                </h3>
+          {reports.map((report) => (
+            <Marker
+              key={report.id}
+              position={[report.latitude, report.longitude]}
+            >
+              <Popup>
+                <div>
+                  <h3>
+                    <b>{report.issueType}</b>
+                  </h3>
 
-                <p>
-                  <b>Severity:</b> {report.severity}
-                </p>
+                  <p>
+                    <b>Severity:</b> {report.severity}
+                  </p>
 
-                <p>
-                  <b>Department:</b> {report.department}
-                </p>
+                  <p>
+                    <b>Department:</b> {report.department}
+                  </p>
 
-                <p>
-                  <b>Status:</b> {report.status}
-                </p>
+                  <p>
+                    <b>Status:</b> {report.status}
+                  </p>
 
-                <p>
-                  <b>Reporter:</b> {report.userEmail}
-                </p>
-              </div>
-            </Popup>
-          </Marker>
-        ))}
-      </MapContainer>
+                  <p>
+                    <b>Reporter:</b> {report.userEmail}
+                  </p>
+                </div>
+              </Popup>
+            </Marker>
+          ))}
+        </MapContainer>
+      </motion.div>
     </div>
   );
 };

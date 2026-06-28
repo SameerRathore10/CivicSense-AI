@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import {
   collection,
   onSnapshot,
@@ -99,11 +100,11 @@ const Admin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 p-10">
+    <div className="min-h-screen bg-stone-950 pt-28 p-10">
       {" "}
       <div className="flex justify-between items-center mb-8">
         {" "}
-        <h1 className="text-5xl font-bold text-white">Admin Dashboard </h1>
+        <h1 className="text-5xl font-bold text-stone-100">Admin Dashboard </h1>
         <button
           onClick={handleLogout}
           className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg"
@@ -117,37 +118,40 @@ const Admin = () => {
           placeholder="🔍 Search by issue, department or reporter email..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full max-w-xl bg-slate-900 border border-slate-800 text-white px-4 py-3 rounded-xl outline-none focus:border-indigo-500"
+          className="w-full max-w-xl bg-stone-900 border border-stone-800 text-stone-100 px-4 py-3 rounded-xl outline-none focus:border-green-500"
         />
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <div className="bg-slate-900 p-6 rounded-2xl">
-          <h3 className="text-slate-400">Total Reports</h3>
-          <p className="text-3xl font-bold text-white">{stats.total}</p>
+        <div className="bg-stone-900 p-6 rounded-2xl">
+          <h3 className="text-stone-400">Total Reports</h3>
+          <p className="text-3xl font-bold text-stone-100">{stats.total}</p>
         </div>
 
-        <div className="bg-slate-900 p-6 rounded-2xl">
-          <h3 className="text-slate-400">Pending</h3>
+        <div className="bg-stone-900 p-6 rounded-2xl">
+          <h3 className="text-stone-400">Pending</h3>
           <p className="text-3xl font-bold text-yellow-400">{stats.pending}</p>
         </div>
 
-        <div className="bg-slate-900 p-6 rounded-2xl">
-          <h3 className="text-slate-400">Resolved</h3>
+        <div className="bg-stone-900 p-6 rounded-2xl">
+          <h3 className="text-stone-400">Resolved</h3>
           <p className="text-3xl font-bold text-green-400">{stats.resolved}</p>
         </div>
 
-        <div className="bg-slate-900 p-6 rounded-2xl">
-          <h3 className="text-slate-400">High Severity</h3>
+        <div className="bg-stone-900 p-6 rounded-2xl">
+          <h3 className="text-stone-400">High Severity</h3>
           <p className="text-3xl font-bold text-red-400">
             {stats.highSeverity}
           </p>
         </div>
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredReports.map((report) => (
-          <div
+        {filteredReports.map((report, index) => (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
             key={report.id}
-            className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden"
+            className="bg-stone-900 border border-stone-800 rounded-2xl overflow-hidden hover:border-green-500 hover:shadow-lg transition duration-300"
           >
             <img
               src={report.imageUrl}
@@ -156,15 +160,15 @@ const Admin = () => {
             />
 
             <div className="p-5">
-              <h2 className="text-xl font-bold text-white">
+              <h2 className="text-xl font-bold text-stone-100">
                 {report.issueType}
               </h2>
 
               <p className="text-red-400 mt-2">{report.severity}</p>
 
-              <p className="text-slate-300 mt-2">{report.department}</p>
+              <p className="text-stone-300 mt-2">{report.department}</p>
 
-              <p className="text-slate-400 text-sm mt-2">
+              <p className="text-stone-400 text-sm mt-2">
                 Reported by: {report.userEmail}
               </p>
 
@@ -207,11 +211,11 @@ const Admin = () => {
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
 
         {filteredReports.length === 0 && (
-          <div className="col-span-full text-center text-slate-400 py-10">
+          <div className="col-span-full text-center text-stone-400 py-10">
             No matching reports found.
           </div>
         )}
@@ -221,3 +225,5 @@ const Admin = () => {
 };
 
 export default Admin;
+
+

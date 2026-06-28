@@ -1,9 +1,9 @@
 const variants = {
   primary:
-    "bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg shadow-indigo-600/30",
+    "bg-green-600 hover:bg-green-700 text-white shadow-lg shadow-green-600/30",
 
   secondary:
-    "border border-slate-700 bg-slate-900 text-white hover:border-indigo-500 hover:bg-slate-800",
+    "border border-stone-700 bg-stone-900 text-white hover:border-green-500 hover:bg-stone-800",
 };
 
 const Button = ({
