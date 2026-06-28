@@ -19,7 +19,7 @@ const ReportIssue = () => {
         transition={{ duration: 0.6 }}
         className="max-w-7xl mx-auto"
       >
-        <h1 className="text-5xl font-bold text-stone-100 mb-3">
+        <h1 className="text-3xl md:text-5xl font-bold text-stone-100 mb-3">
           Report Community Issue
         </h1>
 

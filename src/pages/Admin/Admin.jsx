@@ -102,9 +102,9 @@ const Admin = () => {
   return (
     <div className="min-h-screen bg-stone-950 pt-28 p-10">
       {" "}
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex flex-col md:flex-row md:justify-between items-start md:items-center gap-4 mb-8">
         {" "}
-        <h1 className="text-5xl font-bold text-stone-100">Admin Dashboard </h1>
+        <h1 className="text-3xl md:text-5xl font-bold text-stone-100">Admin Dashboard </h1>
         <button
           onClick={handleLogout}
           className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg"
