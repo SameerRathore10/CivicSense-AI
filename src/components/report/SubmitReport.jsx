@@ -45,7 +45,7 @@ const SubmitReport = ({ analysis, imageUrl, location }) => {
   return (
     <button
       onClick={handleSubmit}
-      className="w-full bg-indigo-600 hover:bg-indigo-700 transition text-white font-bold py-4 rounded-xl"
+      className="w-full bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 shadow-[0_0_15px_rgba(34,197,94,0.3)] hover:shadow-[0_0_25px_rgba(34,197,94,0.5)] transition-all duration-300 text-white font-bold py-4 rounded-xl text-lg"
     >
       🚀 Submit Report{" "}
     </button>

@@ -86,8 +86,8 @@ const LocationPicker = ({ setLocation }) => {
   };
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-      <h2 className="text-2xl font-bold text-white mb-4">📍 Select Location</h2>
+    <div className="bg-stone-900/50 backdrop-blur border border-green-900/50 rounded-2xl p-6">
+      <h2 className="text-2xl font-bold text-stone-100 mb-4">📍 Select Location</h2>
 
       <div className="flex gap-2 mb-4">
         <input
@@ -95,12 +95,12 @@ const LocationPicker = ({ setLocation }) => {
           placeholder="Search location..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="flex-1 bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white"
+          className="flex-1 bg-stone-800 border border-stone-700 rounded-lg px-4 py-2 text-stone-100 placeholder:text-stone-500"
         />
 
         <button
           onClick={searchLocation}
-          className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 rounded-lg"
+          className="bg-green-600 hover:bg-green-700 text-white px-4 rounded-lg font-medium transition"
         >
           Search
         </button>
@@ -108,7 +108,7 @@ const LocationPicker = ({ setLocation }) => {
 
       <button
         onClick={getCurrentLocation}
-        className="mb-4 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg"
+        className="mb-4 bg-stone-800 hover:bg-stone-700 border border-stone-700 text-stone-200 px-4 py-2 rounded-lg font-medium transition flex items-center justify-center w-full sm:w-auto"
       >
         📍 Use My Current Location
       </button>
@@ -131,7 +131,7 @@ const LocationPicker = ({ setLocation }) => {
         </MapContainer>
       </div>
 
-      <p className="text-slate-400 text-sm mt-3">
+      <p className="text-stone-400 text-sm mt-3">
         Search a location, use current location, or click on the map.
       </p>
     </div>
