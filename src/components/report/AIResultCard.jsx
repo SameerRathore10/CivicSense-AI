@@ -1,7 +1,7 @@
 const AIResultCard = ({ analysis }) => {
   if (!analysis) {
     return (
-      <div className="bg-stone-900/50 backdrop-blur border border-green-900/50 rounded-2xl p-6">
+      <div className="bg-stone-900/50 backdrop-blur border border-green-900/50 rounded-2xl p-4 md:p-6">
         <h2 className="text-2xl font-bold text-stone-100 mb-6">🤖 AI Analysis</h2>
 
         <p className="text-stone-400">
@@ -12,7 +12,7 @@ const AIResultCard = ({ analysis }) => {
   }
 
   return (
-    <div className="bg-stone-900/50 backdrop-blur border border-green-900/50 rounded-2xl p-6">
+    <div className="bg-stone-900/50 backdrop-blur border border-green-900/50 rounded-2xl p-4 md:p-6">
       <h2 className="text-2xl font-bold text-stone-100 mb-6">🤖 AI Analysis</h2>
 
       <div className="space-y-4">

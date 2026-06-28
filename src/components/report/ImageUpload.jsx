@@ -59,7 +59,7 @@ const ImageUpload = ({ setAnalysis, setImageUrl }) => {
   };
 
   return (
-    <div className="bg-stone-900/50 backdrop-blur border border-green-900/50 rounded-2xl p-8 h-full flex flex-col">
+    <div className="bg-stone-900/50 backdrop-blur border border-green-900/50 rounded-2xl p-5 md:p-8 h-full flex flex-col">
       <h2 className="text-2xl font-bold text-stone-100 mb-6">
         Upload Issue Image
       </h2>
@@ -67,7 +67,7 @@ const ImageUpload = ({ setAnalysis, setImageUrl }) => {
       {/* Main Upload Trigger */}
       <div 
         onClick={() => setIsModalOpen(true)}
-        className="flex-1 border-2 border-dashed border-stone-700 rounded-2xl p-10 flex flex-col items-center justify-center cursor-pointer hover:border-green-500 transition min-h-[200px]"
+        className="flex-1 border-2 border-dashed border-stone-700 rounded-2xl p-6 md:p-10 flex flex-col items-center justify-center cursor-pointer hover:border-green-500 transition min-h-[200px]"
       >
         <FaCloudUploadAlt
           size={60}

@@ -86,10 +86,10 @@ const LocationPicker = ({ setLocation }) => {
   };
 
   return (
-    <div className="bg-stone-900/50 backdrop-blur border border-green-900/50 rounded-2xl p-6">
+    <div className="bg-stone-900/50 backdrop-blur border border-green-900/50 rounded-2xl p-4 md:p-6">
       <h2 className="text-2xl font-bold text-stone-100 mb-4">📍 Select Location</h2>
 
-      <div className="flex gap-2 mb-4">
+      <div className="flex flex-col sm:flex-row gap-2 mb-4">
         <input
           type="text"
           placeholder="Search location..."
@@ -100,7 +100,7 @@ const LocationPicker = ({ setLocation }) => {
 
         <button
           onClick={searchLocation}
-          className="bg-green-600 hover:bg-green-700 text-white px-4 rounded-lg font-medium transition"
+          className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 sm:py-0 rounded-lg font-medium transition"
         >
           Search
         </button>

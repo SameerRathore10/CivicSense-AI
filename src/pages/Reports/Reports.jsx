@@ -26,11 +26,11 @@ const Reports = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-stone-950 pt-28 p-10">
+    <div className="min-h-screen bg-stone-950 pt-28 px-6 md:px-10 pb-10">
       <motion.h1 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-5xl font-bold text-stone-100 mb-8"
+        className="text-3xl md:text-5xl font-bold text-stone-100 mb-8"
       >
         Community Reports
       </motion.h1>
