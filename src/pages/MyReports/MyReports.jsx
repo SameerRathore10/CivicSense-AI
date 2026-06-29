@@ -2,11 +2,9 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { collection, getDocs } from "firebase/firestore";
 import { db, auth } from "../../firebase/firebase";
-import { useNavigate } from "react-router-dom";
 
 const MyReports = () => {
   const [reports, setReports] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchMyReports = async () => {
@@ -31,7 +29,7 @@ const MyReports = () => {
 
   return (
     <div className="min-h-screen bg-stone-950 pt-28 px-6 md:px-10 pb-10">
-      <motion.h1 
+      <motion.h1
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         className="text-3xl md:text-5xl font-bold text-stone-100 mb-8"

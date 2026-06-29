@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { useNavigate } from "react-router-dom";
-
+import L from "leaflet";
 import { db } from "../../firebase/firebase";
 
 import "leaflet/dist/leaflet.css";
@@ -18,7 +17,6 @@ L.Icon.Default.mergeOptions({
 
 const MapPage = () => {
   const [reports, setReports] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchReports = async () => {
@@ -31,7 +29,7 @@ const MapPage = () => {
         }));
 
         const reportsWithLocation = data.filter(
-          (report) => report.latitude && report.longitude,
+          (report) => report.latitude && report.longitude
         );
 
         setReports(reportsWithLocation);
