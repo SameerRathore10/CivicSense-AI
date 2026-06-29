@@ -107,6 +107,19 @@ const MapPage = () => {
             >
               <Popup>
                 <div style={{ minWidth: "200px" }}>
+                  {report.imageUrl && (
+                    <img
+                      src={report.imageUrl}
+                      alt={report.issueType}
+                      style={{
+                        width: "100%",
+                        height: "120px",
+                        objectFit: "cover",
+                        borderRadius: "4px",
+                        marginBottom: "8px",
+                      }}
+                    />
+                  )}
                   <h3 style={{ margin: "0 0 8px 0", fontSize: "16px" }}>
                     <b>{report.issueType}</b>
                   </h3>
