@@ -38,7 +38,7 @@ const Admin = () => {
         pending: data.filter((report) => report.status !== "Resolved").length,
         resolved: data.filter((report) => report.status === "Resolved").length,
         highSeverity: data.filter(
-          (report) => report.severity?.toLowerCase() === "high",
+          (report) => report.severity?.toLowerCase() === "high"
         ).length,
       });
     });
@@ -84,7 +84,7 @@ const Admin = () => {
 
   const deleteReport = async (id) => {
     const confirmDelete = window.confirm(
-      "Are you sure you want to delete this report?",
+      "Are you sure you want to delete this report?"
     );
 
     if (!confirmDelete) return;
@@ -104,7 +104,9 @@ const Admin = () => {
       {" "}
       <div className="flex flex-col md:flex-row md:justify-between items-start md:items-center gap-4 mb-8">
         {" "}
-        <h1 className="text-3xl md:text-5xl font-bold text-stone-100">Admin Dashboard </h1>
+        <h1 className="text-3xl md:text-5xl font-bold text-stone-100">
+          Admin Dashboard{" "}
+        </h1>
         <button
           onClick={handleLogout}
           className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg"
@@ -184,6 +186,22 @@ const Admin = () => {
                 </span>
               </p>
 
+              <div className="mt-3 bg-stone-800/50 p-3 rounded-lg">
+                <p className="text-stone-300 text-sm font-semibold mb-1">
+                  Verifications:{" "}
+                  <span className="text-green-400">
+                    {report.verifiedBy?.length || 0}
+                  </span>
+                </p>
+                {report.verifiedBy?.length > 0 && (
+                  <ul className="text-stone-400 text-xs list-disc list-inside mt-1 max-h-20 overflow-y-auto">
+                    {report.verifiedBy.map((email, i) => (
+                      <li key={i}>{email}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+
               {report.latitude && report.longitude && (
                 <a
                   href={`https://www.google.com/maps?q=${report.latitude},${report.longitude}`}
@@ -225,5 +243,3 @@ const Admin = () => {
 };
 
 export default Admin;
-
-
