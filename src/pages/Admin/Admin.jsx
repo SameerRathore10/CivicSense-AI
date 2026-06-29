@@ -22,6 +22,8 @@ const Admin = () => {
     highSeverity: 0,
   });
 
+  const [districts, setDistricts] = useState({});
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -46,13 +48,60 @@ const Admin = () => {
     return () => unsubscribe();
   }, []);
 
+  useEffect(() => {
+    reports.forEach(async (report, index) => {
+      if (
+        report.latitude &&
+        report.longitude &&
+        districts[report.id] === undefined
+      ) {
+        setDistricts((prev) => ({
+          ...prev,
+          [report.id]: { district: "Loading...", state: "Loading..." },
+        }));
+        try {
+          await new Promise((resolve) => setTimeout(resolve, index * 800));
+          const res = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${report.latitude}&lon=${report.longitude}&accept-language=en`
+          );
+          const locData = await res.json();
+          const area =
+            locData.address?.state_district ||
+            locData.address?.county ||
+            locData.address?.city ||
+            locData.address?.town ||
+            locData.address?.suburb ||
+            "Unknown District";
+          const stateName = locData.address?.state || "Unknown State";
+
+          setDistricts((prev) => ({
+            ...prev,
+            [report.id]: { district: area, state: stateName },
+          }));
+        } catch {
+          setDistricts((prev) => ({
+            ...prev,
+            [report.id]: {
+              district: "Unknown Location",
+              state: "Unknown Location",
+            },
+          }));
+        }
+      }
+    });
+  }, [reports, districts]);
+
   const filteredReports = reports.filter((report) => {
     const query = search.toLowerCase();
+    const districtName = districts[report.id]?.district || "";
+    const stateName = districts[report.id]?.state || "";
 
     return (
       report.issueType?.toLowerCase().includes(query) ||
       report.department?.toLowerCase().includes(query) ||
-      report.userEmail?.toLowerCase().includes(query)
+      report.userEmail?.toLowerCase().includes(query) ||
+      districtName.toLowerCase().includes(query) ||
+      stateName.toLowerCase().includes(query)
     );
   });
 
@@ -117,7 +166,7 @@ const Admin = () => {
       <div className="flex justify-center mb-8">
         <input
           type="text"
-          placeholder="🔍 Search by issue, department or reporter email..."
+          placeholder="🔍 Search by issue, department, district, state or reporter email..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="w-full max-w-xl bg-stone-900 border border-stone-800 text-stone-100 px-4 py-3 rounded-xl outline-none focus:border-green-500"
@@ -169,6 +218,20 @@ const Admin = () => {
               <p className="text-red-400 mt-2">{report.severity}</p>
 
               <p className="text-stone-300 mt-2">{report.department}</p>
+
+              {report.latitude && report.longitude && (
+                <p className="text-stone-300 mt-2 text-sm">
+                  <b>Location:</b>{" "}
+                  <span className="font-semibold">
+                    {districts[report.id]?.district || "Loading..."}
+                    {districts[report.id]?.state &&
+                    districts[report.id]?.state !== "Loading..." &&
+                    districts[report.id]?.state !== "Unknown Location"
+                      ? `, ${districts[report.id].state}`
+                      : ""}
+                  </span>
+                </p>
+              )}
 
               <p className="text-stone-400 text-sm mt-2">
                 Reported by: {report.userEmail}
