@@ -13,7 +13,7 @@ export const registerUser = async (email, password, role) => {
   const userCredential = await createUserWithEmailAndPassword(
     auth,
     email,
-    password,
+    password
   );
 
   // Send verification email
@@ -25,6 +25,9 @@ export const registerUser = async (email, password, role) => {
     role,
     createdAt: new Date(),
   });
+
+  // Sign out immediately so they must verify and log in again
+  await signOut(auth);
 
   return userCredential;
 };

@@ -10,7 +10,6 @@ import Button from "../../components/ui/Button";
 const registerSchema = z.object({
   email: z.string().email("Please enter a valid email address."),
   password: z.string().min(6, "Password must be at least 6 characters."),
-  role: z.enum(["client", "admin"]),
 });
 
 const Register = () => {
@@ -22,14 +21,11 @@ const Register = () => {
     formState: { errors, isSubmitting },
   } = useForm({
     resolver: zodResolver(registerSchema),
-    defaultValues: {
-      role: "client",
-    },
   });
 
   const onSubmit = async (data) => {
     try {
-      await registerUser(data.email, data.password, data.role);
+      await registerUser(data.email, data.password, "client");
 
       toast.success(
         "Account created successfully. Please check your email and verify your account before logging in."
@@ -77,21 +73,6 @@ const Register = () => {
             {errors.password && (
               <p className="text-red-400 text-sm mt-1 ml-1">
                 {errors.password.message}
-              </p>
-            )}
-          </div>
-
-          <div>
-            <select
-              {...register("role")}
-              className="w-full bg-stone-950/50 border border-stone-800 rounded-xl px-4 py-3 text-stone-100 outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all appearance-none"
-            >
-              <option value="client">Client</option>
-              <option value="admin">Admin</option>
-            </select>
-            {errors.role && (
-              <p className="text-red-400 text-sm mt-1 ml-1">
-                {errors.role.message}
               </p>
             )}
           </div>

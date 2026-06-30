@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import { doc, getDoc } from "firebase/firestore";
 
 import { db, auth } from "../../firebase/firebase";
-import { loginUser } from "../../services/auth";
+import { loginUser, logoutUser } from "../../services/auth";
 import Button from "../../components/ui/Button";
 
 const loginSchema = z.object({
@@ -33,6 +33,7 @@ const Login = () => {
       await user.reload();
 
       if (!user.emailVerified) {
+        await logoutUser();
         toast.error(
           "Please verify your email before logging in. Check your inbox."
         );
